@@ -6,7 +6,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <h1>hello</h1>
+        {/* <h1>hello</h1> */}
         <Player/>
         <Grid/>
       </>
