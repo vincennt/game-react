@@ -1,0 +1,8 @@
+.player{
+    /* margin-top: 50%<; */
+    width: 200px;
+    border: 1px solid rgb(202, 202, 202);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
