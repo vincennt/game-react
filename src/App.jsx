@@ -6,6 +6,25 @@ import Header from './components/header/Header';
 
 import './App.css'
 export default class App extends Component {
+
+  constructor(){
+    super()
+
+    this.state = {
+      joueur1: true,
+      basic : [
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0]
+      ],
+
+    }
+
+  }
+
   render() {
     return (
       <>
@@ -14,7 +33,7 @@ export default class App extends Component {
         <Player number='1'/>
         <Player number='2'/>
         </div>
-        <Grid/>
+        <Grid basic={this.state.basic}/>
       </>
     )
   }
