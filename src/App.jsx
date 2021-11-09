@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Player from './components/Player/Player';
-import Grid from './components/Grid/Grid';
-import Header from './components/header/Header';
+import Header from './components/header/Header'
+import Player from './components/Player/Player'
+import Grid from './components/Grid/Grid'
 
 import './App.css'
+
 export default class App extends Component {
 
   constructor(){
