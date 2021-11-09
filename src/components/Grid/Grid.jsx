@@ -7,8 +7,8 @@ export default class Grid extends Component {
         return (
             <div className="container">
                 <div className="row justify-content-center">{array.map( (e,i) => (
-                        <div className="circle ligne" key={i} id={i}>
-                            <div className="colone col-1"></div>
+                        <div className="colone col-1" key={i} id={i}>{e.map( (e,i) => (
+                            <div className="circle ligne" key={i} id={i}></div>))}
                         </div>
                     ))}
                 </div>
