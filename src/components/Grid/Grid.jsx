@@ -11,6 +11,7 @@ export default class Grid extends Component {
                         <div className="colone" key={x} id={x}>{e.map( (e,y) => (
 
                             <div className="circle ligne" onClick={ () => {handleAddClick(x,y)}} key={y} id={y}></div>))}
+                            
 
                         </div>
                     ))}
