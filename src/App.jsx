@@ -13,12 +13,13 @@ export default class App extends Component {
     this.state = {
       joueur1: true,
       basic : [
-        [0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0]
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0]
       ],
 
     }
@@ -28,7 +29,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-          <Header title='Puissance 4'/>
+        <Header title='Puissance 4'/>
         <div id="players">
         <Player number='1'/>
         <Player number='2'/>
