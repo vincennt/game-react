@@ -66,8 +66,8 @@ export default class App extends Component {
       <>
         <Header title='Puissance 4'/>
         <div id="players">
-        <Player number='1'/>
-        <Player number='2'/>
+        <Player number='1' img='https://i.pravatar.cc/300'/>
+        <Player number='2' img='https://i.pravatar.cc/301'/>
         </div>
         <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
       </>
