@@ -32,10 +32,10 @@ export default class App extends Component {
     return (
       <>
         <Header title='Puissance 4'/>
-        { <div id="players">
-        <Player number='1'/>
-        <Player number='2'/>
-        </div>  }
+        <div id="players">
+          <Player number='1'/>
+          <Player number='2'/>
+        </div>  
         <Grid basic={this.state.basic}/>
       </>
     )
