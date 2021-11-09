@@ -56,7 +56,7 @@ export default class App extends Component {
 
     for (let y=col.length-1; y>=0; y--) {
       if (newBasic[x][y] === 0) {
-        (this.state.joueur1)
+        (this.state.joueur)
         ? newBasic[x][y] = 1
         : newBasic[x][y] = 2
         break;
