@@ -26,6 +26,16 @@ export default class App extends Component {
 
     }
 
+    this.handleAddClick = this.handleAddClick.bind(this)
+
+  }
+
+  handleAddClick (x,y) {
+
+    console.log(x,y);
+
+    // console.log(this.state.basic[x]);
+
   }
 
   render() {
