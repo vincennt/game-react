@@ -10,8 +10,9 @@ export default class Grid extends Component {
 
                         <div className="colone" key={x} id={x}>{e.map( (e,y) => (
 
-                            <div className="circle ligne" style={{backgroundColor : `${e === 1 ? '#F3E914' : `${e === 2 ? '#E10000' : ''}`}`}}
-                             onClick={ () => {handleAddClick(x,y)}} key={y} id={y}></div>))}
+                            <div className="circle ligne" 
+                                style={{backgroundColor : `${e === 1 ? '#F3E914' : `${e === 2 ? '#E10000' : ''}`}`}}
+                                onClick={ () => {handleAddClick(x,y)}} key={y} id={y}></div>))}
 
                         </div>
                     ))}
