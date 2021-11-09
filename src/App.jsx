@@ -39,33 +39,29 @@ export default class App extends Component {
 
     const {joueur} = this.state
 
-    if(joueur){
-      this.setState({
-        // player : this.state.player+=1
-        joueur : false,
-        basic : newBasic,
-      })  
-    }
-    else if (!joueur){
-      this.setState({
-        // player : this.state.player+=1
-        basic : newBasic,
-        joueur : true
-      })  
-    }
-
     for (let y=col.length-1; y>=0; y--) {
       if (newBasic[x][y] === 0) {
-        (this.state.joueur)
-        ? newBasic[x][y] = 1
-        : newBasic[x][y] = 2
-        break;
+        if(joueur){
+          newBasic[x][y] = 1
+          this.setState({
+            joueur : false,
+            basic : newBasic,
+          })  
+          break;
+        }
+        else if (!joueur){
+          newBasic[x][y] = 2
+          this.setState({
+            joueur : true,
+            basic : newBasic,
+          })  
+          break;
+        }
       }
     }
   }
-
   render() {
-    console.log(this.state.basic);
+    console.log(this.state.joueur);
     return (
       <>
         <Header title='Puissance 4'/>
