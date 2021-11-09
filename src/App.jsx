@@ -32,20 +32,25 @@ export default class App extends Component {
 
   handleAddClick (x,y) {
 
-    console.log(x,y);
+    const newBasic = [...this.state.basic]
 
-    // console.log(this.state.basic[x]);
+    newBasic[x][y] = 1 
 
+    this.setState({
+      basic : newBasic,
+      joueur1 : false
+    })
   }
 
   render() {
+    console.log(this.state.basic);
     return (
       <>
         <Header title='Puissance 4'/>
-        { <div id="players">
+        <div id="players">
         <Player number='1'/>
         <Player number='2'/>
-        </div>  }
+        </div>
         <Grid basic={this.state.basic} handleAddClick={this.handleAddClick}/>
       </>
     )
