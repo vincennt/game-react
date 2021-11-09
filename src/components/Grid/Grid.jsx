@@ -3,12 +3,15 @@ import "./grid.css"
 
 export default class Grid extends Component {
     render() {
-        const {basic} = this.props
+        const {basic, handleAddClick} = this.props
         return (
             <div className="container d-flex justify-content-center mt-4">
-                <div className="row justify-content-center grid-height">{basic.map( (e,i) => (
-                        <div className="colone " key={i} id={i}>{e.map( (e,i) => (
-                            <div className="circle ligne" key={i} id={i}></div>))}
+                <div className="row justify-content-center grid-height">{basic.map( (e,x) => (
+
+                        <div className="colone" key={x} id={x}>{e.map( (e,y) => (
+
+                            <div className="circle ligne" onClick={ () => {handleAddClick(x,y)}} key={y} id={y}></div>))}
+
                         </div>
                     ))}
                 </div>
