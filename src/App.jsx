@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 import Player from './components/Player/Player';
 import Grid from './components/Grid/Grid';
 import Header from './components/header/Header';
@@ -32,10 +31,10 @@ export default class App extends Component {
     return (
       <>
         <Header title='Puissance 4'/>
-        <div id="players">
+        { <div id="players">
         <Player number='1'/>
         <Player number='2'/>
-        </div>
+        </div>  }
         <Grid basic={this.state.basic}/>
       </>
     )
