@@ -46,8 +46,10 @@ export default class App extends Component {
         <Player number='1'/>
         <Player number='2'/>
         </div>  
-        <Grid basic={this.state.basic}/>
+        <Grid basic={this.state.basic} handleAddClick={this.handleAddClick}/>
       </>
     )
   }
 }
+
+
