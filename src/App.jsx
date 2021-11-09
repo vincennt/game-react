@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import Player from './components/Player/Player';
 import Grid from './components/Grid/Grid';
@@ -14,7 +16,7 @@ export default class App extends Component {
         <Player number='1'/>
         <Player number='2'/>
         </div>
-        <Grid/>
+        <Grid array={this.state.array}/>
       </>
     )
   }
