@@ -48,6 +48,7 @@ export default class App extends Component {
           <Player number='2'/>
           </div> 
           <Grid basic={this.state.basic}/>
+          <Reset />
         </>
       )
   }
