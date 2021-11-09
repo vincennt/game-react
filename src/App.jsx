@@ -26,17 +26,27 @@ export default class App extends Component {
 
     }
 
+    this.handleAddClick = this.handleAddClick.bind(this)
+
+  }
+
+  handleAddClick (x,y) {
+
+    console.log(x,y);
+
+    // console.log(this.state.basic[x]);
+
   }
 
   render() {
     return (
       <>
         <Header title='Puissance 4'/>
-        <div id="players">
-          <Player number='1'/>
-          <Player number='2'/>
+         <div id="players">
+        <Player number='1'/>
+        <Player number='2'/>
         </div>  
-        <Grid basic={this.state.basic}/>
+        <Grid basic={this.state.basic} handleAddClick={this.handleAddClick}/>
       </>
     )
   }
