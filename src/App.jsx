@@ -14,6 +14,7 @@ export default class App extends Component {
 
     this.state = {
       joueur1: true,
+      joueur2: false,
       basic : [
         [0,0,0,0,0,0],
         [0,0,0,0,0,0],
@@ -25,21 +26,9 @@ export default class App extends Component {
       ],
 
     }
-
-    this.handleAddClick = this.handleAddClick.bind(this)
-
   }
-
-  handleAddClick (x,y) {
-
-    console.log(x,y);
-
-    // console.log(this.state.basic[x]);
-
-  }
-
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
           <>
           <Header title='Puissance 4'/>
