@@ -3,27 +3,18 @@ import React, { Component } from 'react';
 class Reset extends Component {
     constructor () {
         super ()
-
-        this.resetGrid = this.resetGrid.bind(this)
+        
+        this.handleReset = this.handleReset.bind (this)
     }
 
-    resetGrid () {
-        const resetGrid = [
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0]
-        ]
-        
-}
-    
+    handleReset(e) {
+        this.setState({newBasic : this.props.basic })
+    }
+
     render() {
         return (
             <div>
-                
+                <button onClick/>
             </div>
         );
     }
