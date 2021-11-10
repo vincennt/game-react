@@ -86,6 +86,18 @@ export default class App extends Component {
        }
      }
     }
+    //diagonal reverse
+     for (let col = 0; col < newBasic.length; col++) {
+     for (let ligne = 0; ligne < newBasic.length; ligne++) {
+       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne+1]===1&&newBasic[col+2][ligne+2]===1&&newBasic[col+3][ligne+3]===1 ){
+         alert('diagonale reverse yellow')
+       }
+        if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne+1]===2&&newBasic[col+2][ligne+2]===2&&newBasic[col+3][ligne+3]===2 ){
+          alert('diag reverse red')
+        
+       }
+     }
+    }
     // diagonale 
      for (let col = 0; col < newBasic.length; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
@@ -98,7 +110,6 @@ export default class App extends Component {
        }
      }
     }
-    
   }
  
 
