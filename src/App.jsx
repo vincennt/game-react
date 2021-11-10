@@ -14,7 +14,8 @@ export default class App extends Component {
     super()
 
     this.state = {
-      player : 0,
+      player1 : 0,
+      player2: 0,
       joueur: true,
       basic : [
         [0,0,0,0,0,0],
@@ -61,6 +62,7 @@ export default class App extends Component {
           this.setState({
             joueur : false,
             basic : newBasic,
+            player1 : this.state.player1 += 1,
           })  
           break;
         }
@@ -69,6 +71,7 @@ export default class App extends Component {
           this.setState({
             joueur : true,
             basic : newBasic,
+            player2 : this.state.player2 += 1,
           })  
           break;
         }
@@ -124,9 +127,14 @@ export default class App extends Component {
     }
   }
   
+ 
   render() {
+
     console.log(this.state.basic)
     console.log(this.state.joueur);
+    
+    console.log(`Player 1 : ${this.state.player1}`);
+    console.log(`Player 2 : ${this.state.player2}`);
     return (
       <>
         {/* <div>
