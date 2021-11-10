@@ -88,10 +88,10 @@ export default class App extends Component {
     for (let col = 0; col < newBasic.length ; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col][ligne+1] ===1 && newBasic[col][ligne+2]===1 && newBasic[col][ligne+3]===1 ){
-         alert('vertical yellow')
+         alert('Player 1 Won !')
        }
        else if (newBasic[col][ligne] === 2 && newBasic[col][ligne+1] ===2 && newBasic[col][ligne+2]===2 && newBasic[col][ligne+3]===2 ){
-         alert('vertical red')
+         alert('Player 2 Won !')
        }
        else if(this.state.player1 && this.state.player2 === 21){
         setTimeout( () => {
@@ -105,10 +105,10 @@ export default class App extends Component {
   for (let col = 0; col < newBasic.length; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne]===1&&newBasic[col+2][ligne]===1&&newBasic[col+3][ligne]===1 ){
-         alert('h yellow')
+         alert('Player 1 Won !')
        }
         else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
-          alert('h red')
+          alert('Player 2 Won !')
         
        }
      }
@@ -117,10 +117,10 @@ export default class App extends Component {
      for (let col = 0; col < newBasic.length; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne+1]===1 && newBasic[col+2][ligne+2] === 1&&newBasic[col+3][ligne+3] === 1 ){
-         alert('diagonale reverse yellow')
+         alert('Player 1 Won !')
        }
         else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne+1]===2&&newBasic[col+2][ligne+2]===2&&newBasic[col+3][ligne+3]===2 ){
-          alert('diag reverse red')
+          alert('Player 2 Won !')
        }
      }
     }
@@ -128,10 +128,10 @@ export default class App extends Component {
      for (let col = 0; col < newBasic.length; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne-1]===1&&newBasic[col+2][ligne-2]===1&&newBasic[col+3][ligne-3]===1 ){
-         alert('diag  yellow')
+         alert('Player 1 Won !')
        }
         else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne-1]===2&&newBasic[col+2][ligne-2]===2&&newBasic[col+3][ligne-3]===2 ){
-          alert('diag red')
+          alert('Player 2 Won !')
        }
      }
     }
