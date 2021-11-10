@@ -36,7 +36,6 @@ export default class App extends Component {
     const newBasic = [...this.state.basic]
 
     const col = newBasic[x]
-
     const {joueur} = this.state
 
     for (let y=col.length-1; y>=0; y--) {
