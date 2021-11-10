@@ -37,7 +37,6 @@ export default class App extends Component {
     const newBasic = [...this.state.basic]
 
     const col = newBasic[x]
-
     const {joueur} = this.state
 
     for (let y=col.length-1; y>=0; y--) {
@@ -62,7 +61,45 @@ export default class App extends Component {
         }
       }
     }
+    // condition win vertical
+    for (let col = 0; col < newBasic.length ; col++) {
+     for (let ligne = 0; ligne < newBasic.length; ligne++) {
+       if (newBasic[col][ligne] === 1 && newBasic[col][ligne+1] ===1 && newBasic[col][ligne+2]===1 && newBasic[col][ligne+3]===1 ){
+         alert('vertical yellow')
+       }
+       else if (newBasic[col][ligne] === 2 && newBasic[col][ligne+1] ===2 && newBasic[col][ligne+2]===2 && newBasic[col][ligne+3]===2 ){
+         alert('vertical red')
+       }
+     }
+      
+    }
+    //condition win horizontal
+  for (let col = 0; col < newBasic.length; col++) {
+     for (let ligne = 0; ligne < newBasic.length; ligne++) {
+       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne]===1&&newBasic[col+2][ligne]===1&&newBasic[col+3][ligne]===1 ){
+         alert('h yellow')
+       }
+        if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
+          alert('h red')
+        
+       }
+     }
+    }
+    // diagonale 
+     for (let col = 0; col < newBasic.length; col++) {
+     for (let ligne = 0; ligne < newBasic.length; ligne++) {
+       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne-1]===1&&newBasic[col+2][ligne-2]===1&&newBasic[col+3][ligne-3]===1 ){
+         alert('diag  yellow')
+       }
+        if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne-1]===2&&newBasic[col+2][ligne-2]===2&&newBasic[col+3][ligne-3]===2 ){
+          alert('diag red')
+        
+       }
+     }
+    }
+    
   }
+ 
   render() {
     console.log(`Player 1 : ${this.state.player1}`);
     console.log(`Player 2 : ${this.state.player2}`);
