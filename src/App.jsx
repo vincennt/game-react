@@ -13,7 +13,8 @@ export default class App extends Component {
     super()
 
     this.state = {
-      joueur1: true,
+      // player : 0,
+      joueur: true,
       basic : [
         [0,0,0,0,0,0],
         [0,0,0,0,0,0],
@@ -30,26 +31,46 @@ export default class App extends Component {
 
   }
 
-  handleAddClick (x,y) {
+  handleAddClick (x) {
 
-    console.log(x,y);
+    const newBasic = [...this.state.basic]
 
-    // console.log(this.state.basic[x]);
+    const col = newBasic[x]
 
+    const {joueur} = this.state
+
+    for (let y=col.length-1; y>=0; y--) {
+      if (newBasic[x][y] === 0) {
+        if(joueur){
+          newBasic[x][y] = 1
+          this.setState({
+            joueur : false,
+            basic : newBasic,
+          })  
+          break;
+        }
+        else if (!joueur){
+          newBasic[x][y] = 2
+          this.setState({
+            joueur : true,
+            basic : newBasic,
+          })  
+          break;
+        }
+      }
+    }
   }
-
   render() {
-    console.log(this.state)
+    console.log(this.state.joueur);
     return (
-          <>
-          <Header title='Puissance 4'/>
-          <div id="players">
-          <Player number='1'/>
-          <Player number='2'/>
-          </div> 
-          <Grid basic={this.state.basic}/>
-          <Reset />
-        </>
-      )
+      <>
+        <Header title='Puissance 4'/>
+        <div id="players">
+        <Player number='1' img='https://i.pravatar.cc/300'/>
+        <Player number='2' img='https://i.pravatar.cc/301'/>
+        </div>
+        <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+      </>
+    )
   }
 }
