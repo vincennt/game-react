@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import Header from './components/header/Header'
 import Player from './components/Player/Player'
 import Grid from './components/Grid/Grid'
+import Reset from './components/Reset/Reset'
 
 import './App.css'
 
@@ -24,19 +25,32 @@ export default class App extends Component {
         [0,0,0,0,0,0],
         [0,0,0,0,0,0]
       ],
-
     }
 
     this.handleAddClick = this.handleAddClick.bind(this)
-
+    this.handleResetGrid = this.handleResetGrid.bind(this)
   }
 
-  handleAddClick (x) {
+  handleResetGrid (e) {
+    const newBasic =  [
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0]
+    ]
 
+    this.setState({basic: newBasic})
+  }
+  
+  handleAddClick(x) {
+    
     const newBasic = [...this.state.basic]
-
+    
     const col = newBasic[x]
-
+    
     const {joueur} = this.state
 
     for (let y=col.length-1; y>=0; y--) {
@@ -60,16 +74,21 @@ export default class App extends Component {
       }
     }
   }
+  
   render() {
+    console.log(this.state.basic)
     console.log(this.state.joueur);
     return (
       <>
         <Header title='Puissance 4'/>
         <div id="players">
-        <Player number='1' img='https://i.pravatar.cc/300'/>
-        <Player number='2' img='https://i.pravatar.cc/301'/>
+          <Player number='1' img='https://i.pravatar.cc/300'/>
+          <Reset handleClick={this.handleResetGrid}/>
+          <Player number='2' img='https://i.pravatar.cc/301'/>
         </div>
-        <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+        <div>
+          <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+        </div>
       </>
     )
   }
