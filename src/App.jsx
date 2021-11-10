@@ -28,7 +28,6 @@ export default class App extends Component {
     }
 
     this.handleAddClick = this.handleAddClick.bind(this)
-   
 
   }
   
