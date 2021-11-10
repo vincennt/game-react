@@ -32,9 +32,6 @@ export default class App extends Component {
 
   }
   
-
-
-
   handleAddClick (x) {
 
     const newBasic = [...this.state.basic]
@@ -111,8 +108,6 @@ export default class App extends Component {
      }
     }
   }
- 
-
 
   render() {
     console.log(this.state.joueur);
