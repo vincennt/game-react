@@ -14,8 +14,7 @@ class Reset extends Component {
     render() {
         return (
             <div>
-                {/* C'est chiant  */}
-                <button onClick/>
+                <button onClick
             </div>
         );
     }
