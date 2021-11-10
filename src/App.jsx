@@ -31,6 +31,7 @@ export default class App extends Component {
     this.handleResetGrid = this.handleResetGrid.bind(this)
   }
 
+  //fonction Restart
   handleResetGrid (e) {
     const newBasic =  [
       [0,0,0,0,0,0],
