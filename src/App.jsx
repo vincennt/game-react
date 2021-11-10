@@ -13,7 +13,7 @@ export default class App extends Component {
     super()
 
     this.state = {
-      // player : 0,
+      player : 0,
       joueur: true,
       basic : [
         [0,0,0,0,0,0],
@@ -28,8 +28,12 @@ export default class App extends Component {
     }
 
     this.handleAddClick = this.handleAddClick.bind(this)
+   
 
   }
+  
+
+
 
   handleAddClick (x) {
 
@@ -58,7 +62,34 @@ export default class App extends Component {
         }
       }
     }
+    // condition win vertical
+    for (let col = 0; col < newBasic.length-2 ; col++) {
+     for (let ligne = 0; ligne < newBasic.length-3; ligne++) {
+       if (newBasic[col][ligne] === 1 && newBasic[col][ligne+1] ===1 && newBasic[col][ligne+2]===1 && newBasic[col][ligne+3]===1 ){
+         alert('vertical yellow')
+       }
+       else if (newBasic[col][ligne] === 2 && newBasic[col][ligne+1] ===2 && newBasic[col][ligne+2]===2 && newBasic[col][ligne+3]===2 ){
+         alert('vertical red')
+       }
+     }
+      
+    }
+    //condition win horizontal
+  for (let col = 0; col < newBasic.length-0; col++) {
+     for (let ligne = 0; ligne < newBasic.length-0; ligne++) {
+       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne]===1&&newBasic[col+2][ligne]===1&&newBasic[col+3][ligne]===1 ){
+         console.log('horizontal')
+       }
+        if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
+         console.log('horizontal red')
+        
+       }
+     }
+    }
   }
+ 
+
+
   render() {
     console.log(this.state.joueur);
     return (
