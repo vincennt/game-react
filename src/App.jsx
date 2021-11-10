@@ -44,7 +44,12 @@ export default class App extends Component {
       [0,0,0,0,0,0]
     ]
 
-    this.setState({basic: resetBasic})
+    this.setState({
+      basic: resetBasic,
+      player1 : 0,
+      player2 : 0,
+      joueur : true
+    })
   }
   
   handleAddClick(x) {
@@ -77,6 +82,7 @@ export default class App extends Component {
         }
       }
     }
+
     // condition win vertical
     for (let col = 0; col < newBasic.length ; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
@@ -86,6 +92,11 @@ export default class App extends Component {
        else if (newBasic[col][ligne] === 2 && newBasic[col][ligne+1] ===2 && newBasic[col][ligne+2]===2 && newBasic[col][ligne+3]===2 ){
          alert('vertical red')
        }
+       else if(this.state.player1 && this.state.player2 === 21){
+        setTimeout( () => {
+          this.handleResetGrid()
+        },3000)
+      }
      }
       
     }
@@ -95,7 +106,7 @@ export default class App extends Component {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne]===1&&newBasic[col+2][ligne]===1&&newBasic[col+3][ligne]===1 ){
          alert('h yellow')
        }
-        if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
+        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
           alert('h red')
         
        }
@@ -107,9 +118,8 @@ export default class App extends Component {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne+1]===1 && newBasic[col+2][ligne+2] === 1&&newBasic[col+3][ligne+3] === 1 ){
          alert('diagonale reverse yellow')
        }
-        if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne+1]===2&&newBasic[col+2][ligne+2]===2&&newBasic[col+3][ligne+3]===2 ){
+        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne+1]===2&&newBasic[col+2][ligne+2]===2&&newBasic[col+3][ligne+3]===2 ){
           alert('diag reverse red')
-        
        }
      }
     }
@@ -119,20 +129,18 @@ export default class App extends Component {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne-1]===1&&newBasic[col+2][ligne-2]===1&&newBasic[col+3][ligne-3]===1 ){
          alert('diag  yellow')
        }
-        if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne-1]===2&&newBasic[col+2][ligne-2]===2&&newBasic[col+3][ligne-3]===2 ){
+        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne-1]===2&&newBasic[col+2][ligne-2]===2&&newBasic[col+3][ligne-3]===2 ){
           alert('diag red')
-        
        }
      }
     }
   }
-  
  
   render() {
 
     console.log(this.state.basic)
     console.log(this.state.joueur);
-    
+
     console.log(`Player 1 : ${this.state.player1}`);
     console.log(`Player 2 : ${this.state.player2}`);
     return (
