@@ -32,15 +32,15 @@ export default class App extends Component {
 
   }
   
-
-
-
+  
   handleAddClick (x) {
 
     const newBasic = [...this.state.basic]
-
+    
     const col = newBasic[x]
     const {joueur} = this.state
+
+    
 
     for (let y=col.length-1; y>=0; y--) {
       if (newBasic[x][y] === 0) {
@@ -57,11 +57,13 @@ export default class App extends Component {
           this.setState({
             joueur : true,
             basic : newBasic,
+            
           })  
           break;
         }
       }
     }
+    
     // condition win vertical
     for (let col = 0; col < newBasic.length ; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
@@ -123,7 +125,7 @@ export default class App extends Component {
         <Player number='1' img='https://i.pravatar.cc/300'/>
         <Player number='2' img='https://i.pravatar.cc/301'/>
         </div>
-        <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+        <Grid basic={this.state.basic} handleCount={this.handleCount} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
       </>
     )
   }
