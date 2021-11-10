@@ -33,7 +33,7 @@ export default class App extends Component {
 
   //fonction Restart
   handleResetGrid (e) {
-    const newBasic =  [
+    const resetBasic =  [
       [0,0,0,0,0,0],
       [0,0,0,0,0,0],
       [0,0,0,0,0,0],
@@ -43,7 +43,7 @@ export default class App extends Component {
       [0,0,0,0,0,0]
     ]
 
-    this.setState({basic: newBasic})
+    this.setState({basic: resetBasic})
   }
   
   handleAddClick(x) {
