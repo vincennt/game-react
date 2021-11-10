@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './components/header/Header'
 import Player from './components/Player/Player'
@@ -153,9 +153,9 @@ export default class App extends Component {
          */}
         <Header title='Puissance 4'/>
         <div id="players">
-          <Player number='1' img='https://i.pravatar.cc/300'/>
-          <Reset handleClick={this.handleResetGrid}/>
-          <Player number='2' img='https://i.pravatar.cc/301'/>
+          <Player number='1' img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
+          <Reset handleClick={this.handleResetGrid} joueur={this.state.joueur}/>
+          <Player number='2' img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
         </div>
         <div>
           <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
