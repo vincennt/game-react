@@ -6,6 +6,7 @@ import Player from './components/Player/Player'
 import Grid from './components/Grid/Grid'
 import Reset from './components/Reset/Reset'
 import Accueil from './components/Accueil/Accueil'
+import Coin from './components/Coin/Coin'
 
 import './App.css'
 
@@ -38,7 +39,6 @@ export default class App extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleNameChangeBis = this.handleNameChangeBis.bind(this)
     this.handleButton = this.handleButton.bind(this)
-    this.playSound = this.playSound.bind(this)
     this.homeClick = this.homeClick.bind(this)
   }
 
@@ -62,6 +62,11 @@ export default class App extends Component {
     })
   }
   
+  playSound() {
+    audio.play()
+    audio.volume = 1
+    }
+
   handleAddClick(x) {
     this.playSound()
     
@@ -165,6 +170,8 @@ export default class App extends Component {
         {this.state.start ?  
         <>
         <div id="players">
+
+          <Coin />
 
           <Player 
           number='1' 
