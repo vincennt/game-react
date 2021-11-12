@@ -10,7 +10,7 @@ class Reset extends Component {
             onClick={homeClick}
             >Acceuil </button>
             
-            <audio controls loop autoPlay
+            <audio loop autoPlay
                 src='./time.mp3'>
             </audio>
 

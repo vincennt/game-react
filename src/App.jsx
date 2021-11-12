@@ -38,7 +38,7 @@ export default class App extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleNameChangeBis = this.handleNameChangeBis.bind(this)
     this.handleButton = this.handleButton.bind(this)
-    this.playSound = this.playSound.bind(this)
+    // this.playSound = this.playSound.bind(this)
     this.homeClick = this.homeClick.bind(this)
   }
 
