@@ -38,6 +38,7 @@ export default class App extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleNameChangeBis = this.handleNameChangeBis.bind(this)
     this.handleButton = this.handleButton.bind(this)
+    this.homeClick = this.homeClick.bind(this)
   }
 
   //fonction Restart
@@ -96,11 +97,11 @@ export default class App extends Component {
     for (let col = 0; col < newBasic.length ; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col][ligne+1] ===1 && newBasic[col][ligne+2]===1 && newBasic[col][ligne+3]===1 ){
-         alert('Player 1 Won !')
+         alert(`${this.state.namePlayer1} Won !`)
          break;
        }
        else if (newBasic[col][ligne] === 2 && newBasic[col][ligne+1] ===2 && newBasic[col][ligne+2]===2 && newBasic[col][ligne+3]===2 ){
-         alert('Player 2 Won !')
+         alert(`${this.state.namePlayer2} Won !`)
          break;
        }
        else if(this.state.player1 && this.state.player2 === 21){
@@ -115,11 +116,11 @@ export default class App extends Component {
   for (let col = 0; col < newBasic.length; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne]===1&&newBasic[col+2][ligne]===1&&newBasic[col+3][ligne]===1 ){
-         alert('Player 1 Won !')
+         alert(`${this.state.namePlayer1} Won !`)
          break;
        }
         else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
-          alert('Player 2 Won !')
+          alert(`${this.state.namePlayer2} Won !`)
           break;        
        }
      }
@@ -128,11 +129,11 @@ export default class App extends Component {
      for (let col = 0; col < newBasic.length; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne+1]===1 && newBasic[col+2][ligne+2] === 1&&newBasic[col+3][ligne+3] === 1 ){
-         alert('Player 1 Won !')
+         alert(`${this.state.namePlayer1} Won !`)
          break;
        }
         else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne+1]===2&&newBasic[col+2][ligne+2]===2&&newBasic[col+3][ligne+3]===2 ){
-          alert('Player 2 Won !')
+          alert(`${this.state.namePlayer2} Won !`)
          break;
        }
      }
@@ -141,15 +142,21 @@ export default class App extends Component {
      for (let col = 0; col < newBasic.length; col++) {
      for (let ligne = 0; ligne < newBasic.length; ligne++) {
        if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne-1]===1&&newBasic[col+2][ligne-2]===1&&newBasic[col+3][ligne-3]===1 ){
-         alert('Player 1 Won !')
+         alert()
          break;
        }
         else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne-1]===2&&newBasic[col+2][ligne-2]===2&&newBasic[col+3][ligne-3]===2 ){
-          alert('Player 2 Won !')
+          alert(`${this.state.namePlayer2} Won !`)
          break;
        }
      }
     }
+  }
+
+  homeClick (){
+    this.setState({
+      start : false
+    })
   }
 
   handleNameChange(e) {
@@ -189,12 +196,33 @@ export default class App extends Component {
         {this.state.start ?  
         <>
         <div id="players">
-          <Player number='1' namePlayer={this.state.namePlayer1} img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
-          <Reset handleClick={this.handleResetGrid} joueur={this.state.joueur}/>
-          <Player number='2' namePlayer={this.state.namePlayer2}  img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
+
+          <Player 
+          number='1' 
+          namePlayer={this.state.namePlayer1} 
+          img='https://i.pravatar.cc/300' 
+          joueur='player border border-3 border-warning'/>
+         
+         <Reset 
+          handleClick={this.handleResetGrid}
+          joueur={this.state.joueur}
+          homeClick={this.homeClick}/>
+
+          <Player 
+          number='2' 
+          namePlayer={this.state.namePlayer2}  
+          img='https://i.pravatar.cc/301'  
+          joueur='player border border-3 border-danger'/>
+
         </div>
+
         <div>
-          <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+
+          <Grid 
+          basic={this.state.basic} 
+          handleAddClick={this.handleAddClick} 
+          player={this.state.joueur}/>
+          
         </div>
         </> :
         <>
