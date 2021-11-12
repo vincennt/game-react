@@ -9,6 +9,7 @@ import Reset from './components/Reset/Reset'
 import './App.css'
 
 export default class App extends Component {
+  
 
   constructor(){
     super()
@@ -30,7 +31,9 @@ export default class App extends Component {
 
     this.handleAddClick = this.handleAddClick.bind(this)
     this.handleResetGrid = this.handleResetGrid.bind(this)
+    
   }
+  
 
   //fonction Restart
   handleResetGrid (e) {
@@ -52,14 +55,11 @@ export default class App extends Component {
     })
   }
   
-  handleAddClick(x) {
-    
-    const newBasic = [...this.state.basic]
-    
-    const col = newBasic[x]
-    
-    const {joueur} = this.state
 
+  handleAddClick(x) {
+    const newBasic = [...this.state.basic]
+    const col = newBasic[x]
+    const {joueur} = this.state
     
 
     for (let y=col.length-1; y>=0; y--) {
@@ -84,66 +84,37 @@ export default class App extends Component {
         }
       }  
     }
-    // condition win vertical
-    for (let col = 0; col < newBasic.length ; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col][ligne+1] ===1 && newBasic[col][ligne+2]===1 && newBasic[col][ligne+3]===1 ){
+
+    // condition win 
+    for (let row = 0; row < newBasic.length ; row++) {
+     for (let col = 0; col < newBasic[row].length; col++) {
+       if (newBasic[row][col] === 1 && newBasic[row+1][col] ===1 && newBasic[row+2][col]===1 && newBasic[row+3][col]===1 ||
+         newBasic[row][col] === 1 && newBasic[row][col+1] ===1 && newBasic[row][col+2]===1 && newBasic[row][col+3]===1 ||
+         newBasic[row][col] === 1 && newBasic[row+1][col-1]===1&&newBasic[row+2][col-2]===1&&newBasic[row+3][col-3]===1 ||
+         newBasic[row][col] === 1 && newBasic[row+1][col+1]===1 && newBasic[row+2][col+2] === 1&&newBasic[row+3][col+3] === 1
+         ){
          alert('Player 1 Won !')
        }
-       else if (newBasic[col][ligne] === 2 && newBasic[col][ligne+1] ===2 && newBasic[col][ligne+2]===2 && newBasic[col][ligne+3]===2 ){
+       else if (newBasic[row][col] === 2 && newBasic[row+1][col] ===2 && newBasic[row+2][col]===2 && newBasic[row+3][col]===2 ||
+         newBasic[row][col] === 2 && newBasic[row][col+1] ===2 && newBasic[row][col+2]===2 && newBasic[row][col+3]===2 ||
+         newBasic[row][col] === 2 && newBasic[row+1][col-1]===2&&newBasic[row+2][col-2]===2&&newBasic[row+3][col-3]===2 ||
+         newBasic[row][col] === 2 && newBasic[row+1][col+1]===2 && newBasic[row+2][col+2] === 2&&newBasic[row+3][col+3] === 2 ){
          alert('Player 2 Won !')
        }
+       
        else if(this.state.player1 && this.state.player2 === 21){
         setTimeout( () => {
           this.handleResetGrid()
         },3000)
       }
-     }
-      
-    }
-    //condition win horizontal
-  for (let col = 0; col < newBasic.length; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne]===1&&newBasic[col+2][ligne]===1&&newBasic[col+3][ligne]===1 ){
-         alert('Player 1 Won !')
-       }
-        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
-          alert('Player 2 Won !')
-        
-       }
-     }
-    }
-    //diagonal reverse
-     for (let col = 0; col < newBasic.length; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne+1]===1 && newBasic[col+2][ligne+2] === 1&&newBasic[col+3][ligne+3] === 1 ){
-         alert('Player 1 Won !')
-       }
-        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne+1]===2&&newBasic[col+2][ligne+2]===2&&newBasic[col+3][ligne+3]===2 ){
-          alert('Player 2 Won !')
-       }
-     }
-    }
-    // diagonale 
-     for (let col = 0; col < newBasic.length; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne-1]===1&&newBasic[col+2][ligne-2]===1&&newBasic[col+3][ligne-3]===1 ){
-         alert('Player 1 Won !')
-       }
-        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne-1]===2&&newBasic[col+2][ligne-2]===2&&newBasic[col+3][ligne-3]===2 ){
-          alert('Player 2 Won !')
-       }
-     }
-    }
-  }
+      }}}
  
   render() {
-
+  
     console.log(this.state.basic)
-    console.log(this.state.joueur);
-
-    console.log(`Player 1 : ${this.state.player1}`);
-    console.log(`Player 2 : ${this.state.player2}`);
+    // console.log(this.state.joueur);
+    // console.log(`Player 1 : ${this.state.player1}`);
+    // console.log(`Player 2 : ${this.state.player2}`);
     return (
       <>
         {/* <div>
