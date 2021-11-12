@@ -110,13 +110,13 @@ export default class App extends Component {
          newBasic[row][col] === 1 && newBasic[row+1][col-1]===1&&newBasic[row+2][col-2]===1&&newBasic[row+3][col-3]===1 ||
          newBasic[row][col] === 1 && newBasic[row+1][col+1]===1 && newBasic[row+2][col+2] === 1&&newBasic[row+3][col+3] === 1
          ){
-         alert('Player 1 Won !')
+         alert(`${this.state.namePlayer1} Won !`)
        }
        else if (newBasic[row][col] === 2 && newBasic[row+1][col] ===2 && newBasic[row+2][col]===2 && newBasic[row+3][col]===2 ||
          newBasic[row][col] === 2 && newBasic[row][col+1] ===2 && newBasic[row][col+2]===2 && newBasic[row][col+3]===2 ||
          newBasic[row][col] === 2 && newBasic[row+1][col-1]===2&&newBasic[row+2][col-2]===2&&newBasic[row+3][col-3]===2 ||
          newBasic[row][col] === 2 && newBasic[row+1][col+1]===2 && newBasic[row+2][col+2] === 2&&newBasic[row+3][col+3] === 2 ){
-         alert('Player 2 Won !')
+         alert(`${this.state.namePlayer2} Won !`)
        }
        
        else if(this.state.player1 && this.state.player2 === 21){
