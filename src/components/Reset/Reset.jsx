@@ -6,7 +6,7 @@ class Reset extends Component {
         const {handleClick, homeClick, joueur} = this.props
         return (
             <>
-            <button className={joueur ? 'button border border-5 border-danger' : 'button border border-5  border-warning'}
+            <button className={joueur ? 'button border border-5 border-warning' : 'button border border-5  border-danger'}
             onClick={homeClick}
             >Acceuil </button>
             <button className={joueur ? 'button border border-5 border-warning' : 'button border border-5  border-danger'}
