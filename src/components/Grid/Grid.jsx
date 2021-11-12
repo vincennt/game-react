@@ -5,6 +5,9 @@ export default class Grid extends Component {
     render() {
         const {basic, handleAddClick, joueur} = this.props
         return (
+
+            // Affichage de la grille du Puissance 4 
+
             <div className="container d-flex justify-content-center mt-4">
                 <div className="row justify-content-center grid-height">{basic.map( (e,x) => (
 

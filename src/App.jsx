@@ -41,7 +41,8 @@ export default class App extends Component {
     this.homeClick = this.homeClick.bind(this)
   }
 
-  //fonction Restart
+  //fonction Restart du Puissance 4
+
   handleResetGrid (e) {
     const resetBasic =  [
       [0,0,0,0,0,0],
@@ -66,8 +67,12 @@ export default class App extends Component {
     audio.volume = 1
     }
 
+  // Fonction qui permet de rajouter un jeton et vérifie les conditions de victoire
+  
   handleAddClick(x) {
 
+    // Sound effect à l'ajout d'un jeton 
+    
     this.playSound()
     
     const newBasic = [...this.state.basic]
@@ -75,8 +80,6 @@ export default class App extends Component {
     const col = newBasic[x]
     
     const {joueur} = this.state
-
-    
 
     for (let y=col.length-1; y>=0; y--) {
       if (newBasic[x][y] === 0) {
@@ -101,7 +104,7 @@ export default class App extends Component {
       }  
     }
 
-    // condition win vertical
+    // Conditions win premier Joueur
    
     for (let row = 0; row < newBasic.length ; row++) {
      for (let col = 0; col < newBasic[row].length; col++) {
@@ -112,6 +115,8 @@ export default class App extends Component {
          ){
          alert(`${this.state.namePlayer1} Won !`)
        }
+        //  Conditions de Win second Joueur
+
        else if (newBasic[row][col] === 2 && newBasic[row+1][col] ===2 && newBasic[row+2][col]===2 && newBasic[row+3][col]===2 ||
          newBasic[row][col] === 2 && newBasic[row][col+1] ===2 && newBasic[row][col+2]===2 && newBasic[row][col+3]===2 ||
          newBasic[row][col] === 2 && newBasic[row+1][col-1]===2&&newBasic[row+2][col-2]===2&&newBasic[row+3][col-3]===2 ||
@@ -128,6 +133,8 @@ export default class App extends Component {
     } 
   }
 
+  // Button pour retourner au menu 
+
   homeClick (){
     this.setState({
       start : false
@@ -143,6 +150,8 @@ export default class App extends Component {
     this.setState({ namePlayer2: e.target.value })
   }
   
+  // Function qui valide le nom des joueurs et lance la partie 
+
   handleButton(){
     if(this.state.namePlayer1.length >= 1 && this.state.namePlayer2.length >= 1
       && this.state.namePlayer1.length <=10 && this.state.namePlayer2.length <=10 ){
