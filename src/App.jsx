@@ -113,9 +113,11 @@ export default class App extends Component {
        else if(this.state.player1 && this.state.player2 === 21){
         setTimeout( () => {
           this.handleResetGrid()
-        },3000)
+          },3000)
+        }
       }
-      }}}
+    }
+  }
  
   render() {
   
