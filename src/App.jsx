@@ -10,7 +10,6 @@ import Accueil from './components/Accueil/Accueil'
 import './App.css'
 
 export default class App extends Component {
-  
 
   constructor(){
     super()
@@ -41,7 +40,6 @@ export default class App extends Component {
     this.handleButton = this.handleButton.bind(this)
     this.homeClick = this.homeClick.bind(this)
   }
-  
 
   //fonction Restart
   handleResetGrid (e) {
@@ -63,11 +61,14 @@ export default class App extends Component {
     })
   }
   
-
   handleAddClick(x) {
+    
     const newBasic = [...this.state.basic]
+    
     const col = newBasic[x]
+    
     const {joueur} = this.state
+
     
 
     for (let y=col.length-1; y>=0; y--) {
@@ -92,8 +93,8 @@ export default class App extends Component {
         }
       }  
     }
-
-    // condition win 
+    // condition win vertical
+   
     for (let row = 0; row < newBasic.length ; row++) {
      for (let col = 0; col < newBasic[row].length; col++) {
        if (newBasic[row][col] === 1 && newBasic[row+1][col] ===1 && newBasic[row+2][col]===1 && newBasic[row+3][col]===1 ||
@@ -116,15 +117,39 @@ export default class App extends Component {
           },3000)
         }
       }
+    } 
+  }
+
+  homeClick (){
+    this.setState({
+      start : false
+    })
+  }
+
+  handleNameChange(e) {
+    this.setState({ namePlayer1: e.target.value })
+  }
+
+  handleNameChangeBis(e) {
+    this.setState({ namePlayer2: e.target.value })
+  }
+  
+  handleButton(){
+    if(this.state.namePlayer1.length >= 1 && this.state.namePlayer2.length >= 1
+      && this.state.namePlayer1.length <=8 && this.state.namePlayer2.length <=8 ){
+      this.setState({ start: true })
+    }else {
+      this.setState({error: true})
     }
   }
  
   render() {
-  
+
     console.log(this.state.basic)
-    // console.log(this.state.joueur);
-    // console.log(`Player 1 : ${this.state.player1}`);
-    // console.log(`Player 2 : ${this.state.player2}`);
+    console.log(this.state.joueur);
+
+    console.log(`Player 1 : ${this.state.player1}`);
+    console.log(`Player 2 : ${this.state.player2}`);
     return (
       <>
         {/* <div>
