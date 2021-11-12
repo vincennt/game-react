@@ -11,6 +11,7 @@ import Coin from './components/Coin/Coin'
 import './App.css'
 
 export default class App extends Component {
+  
 
   constructor(){
     super()
@@ -39,8 +40,13 @@ export default class App extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleNameChangeBis = this.handleNameChangeBis.bind(this)
     this.handleButton = this.handleButton.bind(this)
+<<<<<<< HEAD
     this.playSound = this.playSound.bind(this)
+=======
+    this.homeClick = this.homeClick.bind(this)
+>>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
   }
+  
 
   //fonction Restart
   handleResetGrid (e) {
@@ -62,14 +68,15 @@ export default class App extends Component {
     })
   }
   
-  handleAddClick(x) {
-    this.playSound()
-    const newBasic = [...this.state.basic]
-    
-    const col = newBasic[x]
-    
-    const {joueur} = this.state
 
+  handleAddClick(x) {
+<<<<<<< HEAD
+    this.playSound()
+=======
+>>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
+    const newBasic = [...this.state.basic]
+    const col = newBasic[x]
+    const {joueur} = this.state
     
 
     for (let y=col.length-1; y>=0; y--) {
@@ -94,22 +101,30 @@ export default class App extends Component {
         }
       }  
     }
-    // condition win vertical
-    for (let col = 0; col < newBasic.length ; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col][ligne+1] ===1 && newBasic[col][ligne+2]===1 && newBasic[col][ligne+3]===1 ){
+
+    // condition win 
+    for (let row = 0; row < newBasic.length ; row++) {
+     for (let col = 0; col < newBasic[row].length; col++) {
+       if (newBasic[row][col] === 1 && newBasic[row+1][col] ===1 && newBasic[row+2][col]===1 && newBasic[row+3][col]===1 ||
+         newBasic[row][col] === 1 && newBasic[row][col+1] ===1 && newBasic[row][col+2]===1 && newBasic[row][col+3]===1 ||
+         newBasic[row][col] === 1 && newBasic[row+1][col-1]===1&&newBasic[row+2][col-2]===1&&newBasic[row+3][col-3]===1 ||
+         newBasic[row][col] === 1 && newBasic[row+1][col+1]===1 && newBasic[row+2][col+2] === 1&&newBasic[row+3][col+3] === 1
+         ){
          alert('Player 1 Won !')
-         break;
        }
-       else if (newBasic[col][ligne] === 2 && newBasic[col][ligne+1] ===2 && newBasic[col][ligne+2]===2 && newBasic[col][ligne+3]===2 ){
+       else if (newBasic[row][col] === 2 && newBasic[row+1][col] ===2 && newBasic[row+2][col]===2 && newBasic[row+3][col]===2 ||
+         newBasic[row][col] === 2 && newBasic[row][col+1] ===2 && newBasic[row][col+2]===2 && newBasic[row][col+3]===2 ||
+         newBasic[row][col] === 2 && newBasic[row+1][col-1]===2&&newBasic[row+2][col-2]===2&&newBasic[row+3][col-3]===2 ||
+         newBasic[row][col] === 2 && newBasic[row+1][col+1]===2 && newBasic[row+2][col+2] === 2&&newBasic[row+3][col+3] === 2 ){
          alert('Player 2 Won !')
-         break;
        }
+       
        else if(this.state.player1 && this.state.player2 === 21){
         setTimeout( () => {
           this.handleResetGrid()
         },3000)
       }
+<<<<<<< HEAD
      }
       
     }
@@ -175,14 +190,16 @@ export default class App extends Component {
       this.setState({error: true})
     }
   }
+=======
+      }}}
+>>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
  
   render() {
-
+  
     console.log(this.state.basic)
-    console.log(this.state.joueur);
-
-    console.log(`Player 1 : ${this.state.player1}`);
-    console.log(`Player 2 : ${this.state.player2}`);
+    // console.log(this.state.joueur);
+    // console.log(`Player 1 : ${this.state.player1}`);
+    // console.log(`Player 2 : ${this.state.player2}`);
     return (
       <>
         <Header title='Puissance 4'/>
@@ -190,13 +207,40 @@ export default class App extends Component {
         {this.state.start ?  
         <>
         <div id="players">
+<<<<<<< HEAD
           <Player number='1' namePlayer={this.state.namePlayer1} img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
           <Reset handleClick={this.handleResetGrid} joueur={this.state.joueur}/>
           <Coin />
           <Player number='2' namePlayer={this.state.namePlayer2}  img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
+=======
+
+          <Player 
+          number='1' 
+          namePlayer={this.state.namePlayer1} 
+          img='https://i.pravatar.cc/300' 
+          joueur='player border border-3 border-warning'/>
+         
+         <Reset 
+          handleClick={this.handleResetGrid}
+          joueur={this.state.joueur}
+          homeClick={this.homeClick}/>
+
+          <Player 
+          number='2' 
+          namePlayer={this.state.namePlayer2}  
+          img='https://i.pravatar.cc/301'  
+          joueur='player border border-3 border-danger'/>
+
+>>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
         </div>
+
         <div>
-          <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+
+          <Grid 
+          basic={this.state.basic} 
+          handleAddClick={this.handleAddClick} 
+          player={this.state.joueur}/>
+          
         </div>
         </> :
         <>
