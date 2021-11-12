@@ -6,12 +6,10 @@ import Player from './components/Player/Player'
 import Grid from './components/Grid/Grid'
 import Reset from './components/Reset/Reset'
 import Accueil from './components/Accueil/Accueil'
-import Coin from './components/Coin/Coin'
 
 import './App.css'
 
 export default class App extends Component {
-  
 
   constructor(){
     super()
@@ -43,7 +41,6 @@ export default class App extends Component {
     this.playSound = this.playSound.bind(this)
     this.homeClick = this.homeClick.bind(this)
   }
-  
 
   //fonction Restart
   handleResetGrid (e) {
@@ -65,12 +62,15 @@ export default class App extends Component {
     })
   }
   
-
   handleAddClick(x) {
     this.playSound()
+    
     const newBasic = [...this.state.basic]
+    
     const col = newBasic[x]
+    
     const {joueur} = this.state
+
     
 
     for (let y=col.length-1; y>=0; y--) {
@@ -95,8 +95,8 @@ export default class App extends Component {
         }
       }  
     }
-
-    // condition win 
+    // condition win vertical
+   
     for (let row = 0; row < newBasic.length ; row++) {
      for (let col = 0; col < newBasic[row].length; col++) {
        if (newBasic[row][col] === 1 && newBasic[row+1][col] ===1 && newBasic[row+2][col]===1 && newBasic[row+3][col]===1 ||
@@ -116,55 +116,16 @@ export default class App extends Component {
        else if(this.state.player1 && this.state.player2 === 21){
         setTimeout( () => {
           this.handleResetGrid()
-        },3000)
+          },3000)
+        }
       }
-     }
-      
-    }
-    //condition win horizontal
-  for (let col = 0; col < newBasic.length; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne]===1&&newBasic[col+2][ligne]===1&&newBasic[col+3][ligne]===1 ){
-         alert('Player 1 Won !')
-         break;
-       }
-        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne]===2&&newBasic[col+2][ligne]===2&&newBasic[col+3][ligne]===2 ){
-          alert('Player 2 Won !')
-          break;        
-       }
-     }
-    }
-    //diagonal reverse
-     for (let col = 0; col < newBasic.length; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne+1]===1 && newBasic[col+2][ligne+2] === 1&&newBasic[col+3][ligne+3] === 1 ){
-         alert('Player 1 Won !')
-         break;
-       }
-        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne+1]===2&&newBasic[col+2][ligne+2]===2&&newBasic[col+3][ligne+3]===2 ){
-          alert('Player 2 Won !')
-         break;
-       }
-     }
-    }
-    // diagonale 
-     for (let col = 0; col < newBasic.length; col++) {
-     for (let ligne = 0; ligne < newBasic.length; ligne++) {
-       if (newBasic[col][ligne] === 1 && newBasic[col+1][ligne-1]===1&&newBasic[col+2][ligne-2]===1&&newBasic[col+3][ligne-3]===1 ){
-         alert('Player 1 Won !')
-         break;
-       }
-        else if (newBasic[col][ligne] === 2 && newBasic[col+1][ligne-1]===2&&newBasic[col+2][ligne-2]===2&&newBasic[col+3][ligne-3]===2 ){
-          alert('Player 2 Won !')
-         break;
-       }
-     }
-    }
+    } 
   }
 
-  playSound() {
-    var audio = document.getElementById("audio");
-    audio.play();
+  homeClick (){
+    this.setState({
+      start : false
+    })
   }
 
   handleNameChange(e) {
@@ -185,22 +146,25 @@ export default class App extends Component {
   }
  
   render() {
-  
+
     console.log(this.state.basic)
-    // console.log(this.state.joueur);
-    // console.log(`Player 1 : ${this.state.player1}`);
-    // console.log(`Player 2 : ${this.state.player2}`);
+    console.log(this.state.joueur);
+
+    console.log(`Player 1 : ${this.state.player1}`);
+    console.log(`Player 2 : ${this.state.player2}`);
     return (
       <>
+        {/* <div>
+          <h2>Règles du jeu</h2>
+          <p>Le but du jeu est d'aligner une suite de 4 pions de même couleur sur une grille comptant 6 rangées et 7 colonnes. Chaque joueur dispose de 21 pions d'une couleur (par convention, en général jaune ou rouge). Tour à tour, les deux joueurs placent un pion dans la colonne de leur choix, le pion coulisse alors jusqu'à la position la plus basse possible dans la dite colonne à la suite de quoi c'est à l'adversaire de jouer. Le vainqueur est le joueur qui réalise le premier un alignement (horizontal, vertical ou diagonal) consécutif d'au moins quatre pions de sa couleur. Si, alors que toutes les cases de la grille de jeu sont remplies, aucun des deux joueurs n'a réalisé un tel alignement, la partie est déclarée nulle.</p>
+          <Start />
+        </div>
+         */}
         <Header title='Puissance 4'/>
       
         {this.state.start ?  
         <>
         <div id="players">
-          <Player number='1' namePlayer={this.state.namePlayer1} img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
-          <Reset handleClick={this.handleResetGrid} joueur={this.state.joueur}/>
-          <Coin />
-          <Player number='2' namePlayer={this.state.namePlayer2}  img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
 
           <Player 
           number='1' 
