@@ -145,7 +145,7 @@ export default class App extends Component {
   
   handleButton(){
     if(this.state.namePlayer1.length >= 1 && this.state.namePlayer2.length >= 1
-      && this.state.namePlayer1.length <=8 && this.state.namePlayer2.length <=8 ){
+      && this.state.namePlayer1.length <=10 && this.state.namePlayer2.length <=10 ){
       this.setState({ start: true })
     }else {
       this.setState({error: true})
@@ -195,7 +195,7 @@ export default class App extends Component {
         <div className="container">
           { this.state.error ? 
           <>
-          <p className="text-light">Veuillez entrer un nom valide onegaigi ! :)</p> 
+          <p className="text-light">Veuillez entrer un nom valide onegai ! :)</p> 
           <Accueil  
           handleNameChange={this.handleNameChange} 
           handleNameChangeBis={this.handleNameChangeBis} 
