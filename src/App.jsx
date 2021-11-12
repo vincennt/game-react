@@ -143,6 +143,10 @@ export default class App extends Component {
      }
     }
   }
+
+  playSound() {
+    coin.play();
+  } 
  
   render() {
 
@@ -167,6 +171,7 @@ export default class App extends Component {
         </div>
         <div>
           <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+          <audio></audio>
         </div>
       </>
     )
