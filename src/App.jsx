@@ -5,6 +5,8 @@ import Header from './components/header/Header'
 import Player from './components/Player/Player'
 import Grid from './components/Grid/Grid'
 import Reset from './components/Reset/Reset'
+import Accueil from './components/Accueil/Accueil'
+import Coin from './components/Coin/Coin'
 
 import './App.css'
 
@@ -26,10 +28,18 @@ export default class App extends Component {
         [0,0,0,0,0,0],
         [0,0,0,0,0,0]
       ],
+      namePlayer1: "",
+      namePlayer2:"",
+      start: false,
+      error: false
     }
 
     this.handleAddClick = this.handleAddClick.bind(this)
     this.handleResetGrid = this.handleResetGrid.bind(this)
+    this.handleNameChange = this.handleNameChange.bind(this)
+    this.handleNameChangeBis = this.handleNameChangeBis.bind(this)
+    this.handleButton = this.handleButton.bind(this)
+    this.playSound = this.playSound.bind(this)
   }
 
   //fonction Restart
@@ -53,7 +63,7 @@ export default class App extends Component {
   }
   
   handleAddClick(x) {
-    
+    this.playSound()
     const newBasic = [...this.state.basic]
     
     const col = newBasic[x]
@@ -145,8 +155,26 @@ export default class App extends Component {
   }
 
   playSound() {
-    coin.play();
-  } 
+    var audio = document.getElementById("audio");
+    audio.play();
+  }
+
+  handleNameChange(e) {
+    this.setState({ namePlayer1: e.target.value })
+  }
+
+  handleNameChangeBis(e) {
+    this.setState({ namePlayer2: e.target.value })
+  }
+  
+  handleButton(){
+    if(this.state.namePlayer1.length >= 1 && this.state.namePlayer2.length >= 1
+      && this.state.namePlayer1.length <=8 && this.state.namePlayer2.length <=8 ){
+      this.setState({ start: true })
+    }else {
+      this.setState({error: true})
+    }
+  }
  
   render() {
 
@@ -157,23 +185,45 @@ export default class App extends Component {
     console.log(`Player 2 : ${this.state.player2}`);
     return (
       <>
-        {/* <div>
-          <h2>Règles du jeu</h2>
-          <p>Le but du jeu est d'aligner une suite de 4 pions de même couleur sur une grille comptant 6 rangées et 7 colonnes. Chaque joueur dispose de 21 pions d'une couleur (par convention, en général jaune ou rouge). Tour à tour, les deux joueurs placent un pion dans la colonne de leur choix, le pion coulisse alors jusqu'à la position la plus basse possible dans la dite colonne à la suite de quoi c'est à l'adversaire de jouer. Le vainqueur est le joueur qui réalise le premier un alignement (horizontal, vertical ou diagonal) consécutif d'au moins quatre pions de sa couleur. Si, alors que toutes les cases de la grille de jeu sont remplies, aucun des deux joueurs n'a réalisé un tel alignement, la partie est déclarée nulle.</p>
-          <Start />
-        </div>
-         */}
         <Header title='Puissance 4'/>
+      
+        {this.state.start ?  
+        <>
         <div id="players">
-          <Player number='1' img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
+          <Player number='1' namePlayer={this.state.namePlayer1} img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
           <Reset handleClick={this.handleResetGrid} joueur={this.state.joueur}/>
-          <Player number='2' img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
+          <Coin />
+          <Player number='2' namePlayer={this.state.namePlayer2}  img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
         </div>
         <div>
           <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
-          <audio></audio>
         </div>
-      </>
-    )
-  }
-}
+        </> :
+        <>
+        <div className="container">
+          { this.state.error ? 
+          <>
+          <p className="text-light">Veuillez entrer un nom valide onegaigi ! :)</p> 
+          <Accueil  
+          handleNameChange={this.handleNameChange} 
+          handleNameChangeBis={this.handleNameChangeBis} 
+          namePlayer1={this.state.namePlayer1} 
+          namePlayer2={this.state.namePlayer2} 
+          handleButton={this.handleButton}
+          /> 
+          </>:
+          <Accueil  
+          handleNameChange={this.handleNameChange} 
+          handleNameChangeBis={this.handleNameChangeBis} 
+          namePlayer1={this.state.namePlayer1} 
+          namePlayer2={this.state.namePlayer2} 
+          handleButton={this.handleButton}
+          />
+          }
+        </div>
+        </>
+        }
+        </>
+        )
+      }
+    }

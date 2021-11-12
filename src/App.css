@@ -16,8 +16,10 @@ h1 {
   margin-top: 1%;
   text-align: center;
 }
-body{
-  background : url("https://cdn.pixabay.com/photo/2017/10/10/16/55/halloween-2837936__480.png") no-repeat center/cover
+body {
+  height: 100vh;
+  background: url("https://cdn.pixabay.com/photo/2017/10/10/16/55/halloween-2837936__480.png")
+    no-repeat center/cover;
 }
 
 .button {
