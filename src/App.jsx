@@ -5,6 +5,7 @@ import Header from './components/header/Header'
 import Player from './components/Player/Player'
 import Grid from './components/Grid/Grid'
 import Reset from './components/Reset/Reset'
+import Accueil from './components/Accueil/Accueil'
 
 import './App.css'
 
@@ -27,11 +28,18 @@ export default class App extends Component {
         [0,0,0,0,0,0],
         [0,0,0,0,0,0]
       ],
+      namePlayer1: "",
+      namePlayer2:"",
+      start: false,
+      error: false
     }
 
     this.handleAddClick = this.handleAddClick.bind(this)
     this.handleResetGrid = this.handleResetGrid.bind(this)
-    
+    this.handleNameChange = this.handleNameChange.bind(this)
+    this.handleNameChangeBis = this.handleNameChangeBis.bind(this)
+    this.handleButton = this.handleButton.bind(this)
+    this.homeClick = this.homeClick.bind(this)
   }
   
 
@@ -124,15 +132,64 @@ export default class App extends Component {
         </div>
          */}
         <Header title='Puissance 4'/>
+      
+        {this.state.start ?  
+        <>
         <div id="players">
-          <Player number='1' img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
-          <Reset handleClick={this.handleResetGrid} joueur={this.state.joueur}/>
-          <Player number='2' img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
+
+          <Player 
+          number='1' 
+          namePlayer={this.state.namePlayer1} 
+          img='https://i.pravatar.cc/300' 
+          joueur='player border border-3 border-warning'/>
+         
+         <Reset 
+          handleClick={this.handleResetGrid}
+          joueur={this.state.joueur}
+          homeClick={this.homeClick}/>
+
+          <Player 
+          number='2' 
+          namePlayer={this.state.namePlayer2}  
+          img='https://i.pravatar.cc/301'  
+          joueur='player border border-3 border-danger'/>
+
         </div>
+
         <div>
-          <Grid basic={this.state.basic} handleAddClick={this.handleAddClick} player={this.state.joueur}/>
+
+          <Grid 
+          basic={this.state.basic} 
+          handleAddClick={this.handleAddClick} 
+          player={this.state.joueur}/>
+          
         </div>
-      </>
-    )
-  }
-}
+        </> :
+        <>
+        <div className="container">
+          { this.state.error ? 
+          <>
+          <p className="text-light">Veuillez entrer un nom valide onegaigi ! :)</p> 
+          <Accueil  
+          handleNameChange={this.handleNameChange} 
+          handleNameChangeBis={this.handleNameChangeBis} 
+          namePlayer1={this.state.namePlayer1} 
+          namePlayer2={this.state.namePlayer2} 
+          handleButton={this.handleButton}
+          /> 
+          </>:
+          <Accueil  
+          handleNameChange={this.handleNameChange} 
+          handleNameChangeBis={this.handleNameChangeBis} 
+          namePlayer1={this.state.namePlayer1} 
+          namePlayer2={this.state.namePlayer2} 
+          handleButton={this.handleButton}
+          />
+          }
+        </div>
+        </>
+        }
+        </>
+        )
+      }
+    }

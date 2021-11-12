@@ -6,7 +6,7 @@ class Player extends Component {
 
     render() {
 
-        const {number, img,joueur} = this.props
+        const {img, joueur, namePlayer1, namePlayer} = this.props
         
         return (
 
@@ -15,7 +15,7 @@ class Player extends Component {
             <div className={joueur}>
                 <div style={{background :  `url(${img}) no-repeat center/cover`,
                  width : '45%', height : '100%'}}></div>
-                <h2>Player {number} </h2>
+                <h2>{namePlayer}</h2>
             </div>
         )
     }
