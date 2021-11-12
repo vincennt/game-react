@@ -61,7 +61,14 @@ export default class App extends Component {
     })
   }
   
+  playSound() {
+    audio.play()
+    audio.volume = 1
+    }
+
   handleAddClick(x) {
+
+    this.playSound()
     
     const newBasic = [...this.state.basic]
     
@@ -93,6 +100,7 @@ export default class App extends Component {
         }
       }  
     }
+
     // condition win vertical
    
     for (let row = 0; row < newBasic.length ; row++) {
@@ -102,13 +110,13 @@ export default class App extends Component {
          newBasic[row][col] === 1 && newBasic[row+1][col-1]===1&&newBasic[row+2][col-2]===1&&newBasic[row+3][col-3]===1 ||
          newBasic[row][col] === 1 && newBasic[row+1][col+1]===1 && newBasic[row+2][col+2] === 1&&newBasic[row+3][col+3] === 1
          ){
-         alert('Player 1 Won !')
+         alert(`${this.state.namePlayer1} Won !`)
        }
        else if (newBasic[row][col] === 2 && newBasic[row+1][col] ===2 && newBasic[row+2][col]===2 && newBasic[row+3][col]===2 ||
          newBasic[row][col] === 2 && newBasic[row][col+1] ===2 && newBasic[row][col+2]===2 && newBasic[row][col+3]===2 ||
          newBasic[row][col] === 2 && newBasic[row+1][col-1]===2&&newBasic[row+2][col-2]===2&&newBasic[row+3][col-3]===2 ||
          newBasic[row][col] === 2 && newBasic[row+1][col+1]===2 && newBasic[row+2][col+2] === 2&&newBasic[row+3][col+3] === 2 ){
-         alert('Player 2 Won !')
+         alert(`${this.state.namePlayer2} Won !`)
        }
        
        else if(this.state.player1 && this.state.player2 === 21){
@@ -124,6 +132,7 @@ export default class App extends Component {
     this.setState({
       start : false
     })
+    this.handleResetGrid()
   }
 
   handleNameChange(e) {
@@ -136,7 +145,7 @@ export default class App extends Component {
   
   handleButton(){
     if(this.state.namePlayer1.length >= 1 && this.state.namePlayer2.length >= 1
-      && this.state.namePlayer1.length <=8 && this.state.namePlayer2.length <=8 ){
+      && this.state.namePlayer1.length <=10 && this.state.namePlayer2.length <=10 ){
       this.setState({ start: true })
     }else {
       this.setState({error: true})
@@ -145,19 +154,9 @@ export default class App extends Component {
  
   render() {
 
-    console.log(this.state.basic)
-    console.log(this.state.joueur);
-
-    console.log(`Player 1 : ${this.state.player1}`);
-    console.log(`Player 2 : ${this.state.player2}`);
     return (
       <>
-        {/* <div>
-          <h2>Règles du jeu</h2>
-          <p>Le but du jeu est d'aligner une suite de 4 pions de même couleur sur une grille comptant 6 rangées et 7 colonnes. Chaque joueur dispose de 21 pions d'une couleur (par convention, en général jaune ou rouge). Tour à tour, les deux joueurs placent un pion dans la colonne de leur choix, le pion coulisse alors jusqu'à la position la plus basse possible dans la dite colonne à la suite de quoi c'est à l'adversaire de jouer. Le vainqueur est le joueur qui réalise le premier un alignement (horizontal, vertical ou diagonal) consécutif d'au moins quatre pions de sa couleur. Si, alors que toutes les cases de la grille de jeu sont remplies, aucun des deux joueurs n'a réalisé un tel alignement, la partie est déclarée nulle.</p>
-          <Start />
-        </div>
-         */}
+
         <Header title='Puissance 4'/>
       
         {this.state.start ?  
@@ -196,7 +195,7 @@ export default class App extends Component {
         <div className="container">
           { this.state.error ? 
           <>
-          <p className="text-light">Veuillez entrer un nom valide onegaigi ! :)</p> 
+          <p className="text-light">Veuillez entrer un nom valide onegai ! :)</p> 
           <Accueil  
           handleNameChange={this.handleNameChange} 
           handleNameChangeBis={this.handleNameChangeBis} 
