@@ -40,11 +40,8 @@ export default class App extends Component {
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleNameChangeBis = this.handleNameChangeBis.bind(this)
     this.handleButton = this.handleButton.bind(this)
-<<<<<<< HEAD
     this.playSound = this.playSound.bind(this)
-=======
     this.homeClick = this.homeClick.bind(this)
->>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
   }
   
 
@@ -70,10 +67,7 @@ export default class App extends Component {
   
 
   handleAddClick(x) {
-<<<<<<< HEAD
     this.playSound()
-=======
->>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
     const newBasic = [...this.state.basic]
     const col = newBasic[x]
     const {joueur} = this.state
@@ -124,7 +118,6 @@ export default class App extends Component {
           this.handleResetGrid()
         },3000)
       }
-<<<<<<< HEAD
      }
       
     }
@@ -190,9 +183,6 @@ export default class App extends Component {
       this.setState({error: true})
     }
   }
-=======
-      }}}
->>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
  
   render() {
   
@@ -207,12 +197,10 @@ export default class App extends Component {
         {this.state.start ?  
         <>
         <div id="players">
-<<<<<<< HEAD
           <Player number='1' namePlayer={this.state.namePlayer1} img='https://i.pravatar.cc/300' joueur='player border border-3 border-warning'/>
           <Reset handleClick={this.handleResetGrid} joueur={this.state.joueur}/>
           <Coin />
           <Player number='2' namePlayer={this.state.namePlayer2}  img='https://i.pravatar.cc/301'  joueur='player border border-3 border-danger'/>
-=======
 
           <Player 
           number='1' 
@@ -231,7 +219,6 @@ export default class App extends Component {
           img='https://i.pravatar.cc/301'  
           joueur='player border border-3 border-danger'/>
 
->>>>>>> 4ee59e6802454e4adce53e920eb46b158e99e7a0
         </div>
 
         <div>
